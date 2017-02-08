@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html
+  PUBLIC "-//HST//DTD XHTML5 1.0 Transitional//EN" "http://www.ltg.ed.ac.uk/~ht/xhtml5.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta name="copyright" content="Copyright &#xa9; 2016 &lt;a href=&#34;http://www.ltg.ed.ac.uk/~ht/&#34;&gt;Henry S. Thompson&lt;/a&gt;&amp;#160;&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/deed.en&#34;&gt;CC-BY-SA&lt;/a&gt;"/><meta http-equiv="Content-type" content="text/html; charset=utf-8"/><style type="text/css">
+       ul.nolabel { margin: 0; margin-left: -2.5em}
+       ul.naked.nolabel {margin: 0; margin-left: 0; padding-left: 0}
+       ul.cdefn {clear: both}
+       div.ndli { margin-bottom: 1ex }
+       div.hidden {display: none}
+
+    ul.naked > li { list-style-type: none; background: none; margin-left: 2em;
+margin-bottom: 0 }
+    li ul.naked > li, dd ul.naked > li { list-style-type: none; background: none; margin-left: 0;
+margin-bottom: 0 }
+    li.cdefni {}
+    li.cdefni span.cl {display: inline-block; vertical-align: bottom}
+    li.cdefni span.cr {display: inline-block; margin-left: 1em; vertical-align: bottom}
+   pre.code {display: inline-block}
+   blockquote.vanilla {display: inline-block; margin-left: 1em;
+        border: solid 1px; background: rgb(238,234,230);
+                   padding: .5ex .5em}
+   blockquote.vanilla ul.naked li {margin-left: 0 ! important;font-size: 100%}
+    ol ol ol, ol ol ol li {list-style-type: lower-roman}
+    ol ol, ol ol li {list-style-type: lower-alpha}
+    i i {font-style: normal}
+    li li {font-style: normal}
+    li ul li {font-style: normal}
+    li { line-height: 100%; margin-top: 0.3em}
+    .math {font-family: 'Arial Unicode MS', 'Lucida Sans Unicode', serif}
+    .sub {font-size: 80%; vertical-align: sub}
+    .termref {text-decoration: none; color: #606000}
+       .licence {margin-left: 1em; font-size: 70%}
+       .credits {margin-left: 1.5em; font-size: 70%}
+    .right {position: absolute}
+   .stackdown {vertical-align: text-top; margin-top: 0}
+    body {font-size: 12pt}
+     @page { size: A4 portrait; margin: 2cm;
+             orphans: 2; widows: 2;} 
+     @media screen {
+     body {width: 20cm; margin-left: auto; margin-right: auto}
+       }
+     @media print {
+        body {font-size: 10pt}
+        h1, h2, h3, h4 {page-break-after: avoid}
+     }
+     pre.code {font-family: monospace;
+ font-weight: bold;
+ line-height: 120%;
+ padding-top: 0.2em;
+ padding-bottom: 0.2em;
+ padding-left: 1em;
+ padding-right: 1em;
+ border-style: solid;
+ border-left-width: 1em;
+ border-top-width: thin;
+ border-right-width: thin;
+ border-bottom-width: thin;
+ border-color: #95ABD0;
+ color: #00428C;
+ background-color: #E4E5E7;
+}
+       pre {margin-left: 0em}
+       div.toc h2 {font-size: 120%; margin-top: 0em; margin-bottom: 0em}
+       div.toc h4 {font-size: 100%; margin-top: 0em; margin-bottom: 0em;
+                   margin-left: 1em}
+       div.toc h1 {font-size: 140%; margin-bottom: 0em}
+       div.toc ul {margin-top: 1ex}
+       .byline {font-size: 120%}
+       div.figure {margin-left: 2em}
+       div.caption {font-style: italic; font-weight: bold; margin-top: 1em}
+       i i {font-style: normal}
+       img {border: 0}
+       .copyright {font-size: 70%}
+     </style><title>What is a document (in XProc 3.0)?</title></head><body style="font-family: DejaVu Sans, Arial; background: rgb(254,250,246)"><div style="text-align: center" class="head"><hr/><h1>What is a document (in XProc 3.0)?</h1><div class="byline">Henry S. Thompson</div><div class="byline"> 8 Feb 2017</div><div class="copyright">Copyright &#xa9; 2016 <a href="http://www.ltg.ed.ac.uk/~ht/">Henry S. Thompson</a>&#160;<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.en">CC-BY-SA</a></div></div><div class="body"><div><h2>1.  What was true in 1.0?</h2><ul class=" "><li>Pipes carried (XDM) XML document nodes</li><li>Variables/options/parameters carried strings</li><li>The XPath context for language-level XPath evaluation was always
+a document node or absent (?)</li></ul></div><div><h2>2.  What do we want for 3.0?</h2><dl class=" "><dt><b><a name="pipe_contents">pipe contents</a></b></dt><dd>Metadata (including type?) plus data:
+     <ul class=" "><li>XDM items</li><li>JSon arrays/maps/scalars?</li><li>Blobs</li><li>Other native objects (text?)</li><li>Casting of pipe-content to other types?</li><li>Is it possible to create (non-XDM) pipe-content?  If so, how?</li></ul></dd><dt><b><a name="variables.options">variables/options</a></b></dt><dd>data:
+     <ul class=" "><li>XDM items</li><li>JSon arrays/maps/scalars?</li><li>Blobs</li><li>[Whatever we decide for pipe-content]</li><li>May depend on choices about
+(other) expression language(s)</li></ul></dd><dt><b><a name="XPath_context">XPath context</a></b></dt><dd>
+     Something that works: XDM for XDM, JSon for JSon, for blobs:
+     <ul class=" "><li>Nothing (empty sequence)</li><li>A bomb (touching it causes an error)</li><li>In at least some cases, a coercion (to string, to hex-encoded,
+...)</li><li>A handle (how different from a bomb?)(how different from the thing
+itself)(a function?)</li><li>An empty XDM document node</li></ul></dd><dt><b><a name="metadata_key">metadata key</a></b></dt><dd>
+     We need something to use in return for which you can get the metadata
+associated with an input 'document'...
+    </dd><dt><b><a name="metadata_itself">metadata itself</a></b></dt><dd>
+     Map?
+    </dd><dt><b><a name="document_type">document type</a></b></dt><dd><ul class=" "><li>Do we need <code>document-type()</code>?</li><li>Or is it a privileged entry in
+the metadata map?</li><li>What is its relation to the Content-type or other HTTP headers if
+there were such in its history?</li></ul></dd><dt><b><a name="metadata_trajectory">metadata trajectory</a></b></dt><dd>What happens to metadata across steps?</dd></dl></div></div></body></html>
